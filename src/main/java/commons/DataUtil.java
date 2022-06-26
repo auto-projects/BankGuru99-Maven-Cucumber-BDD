@@ -38,6 +38,10 @@ public class DataUtil {
         return faker.address().fullAddress();
     }
 
+    public String getStreetAddress() {
+        return faker.address().streetAddress();
+    }
+
     public String getCity() {
         return faker.address().city();
     }
@@ -45,9 +49,11 @@ public class DataUtil {
     public String getState() {
         return faker.address().stateAbbr();
     }
+
     public String getPINNumber() {
         return faker.number().digits(6);
     }
+
     public String getNumber() {
         return faker.number().digits(9);
     }

@@ -5,7 +5,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>maven-cucumber-bdd</name>
     <properties>
-        <cucumber.version> 1.2.5 </cucumber.version>
+        <cucumber.version> 1.2.6 </cucumber.version>
         <selenium.version> 3.141.59 </selenium.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -13,6 +13,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <jackson.version>2.9.4</jackson.version>
         <report.version>3.20.0</report.version>
+        <cucumber-reporting>5.7.1</cucumber-reporting>
     </properties>
 
     <dependencies>
@@ -48,7 +49,7 @@
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>5.0.3</version>
+            <version>5.2.0</version>
         </dependency>
 
 
@@ -111,8 +112,8 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <projectName>GURU99 BANK CUCUMBER REPORT HTML</projectName>
-                            <!--                            <skip>false</skip>-->
+                            <projectName>GURU99 BANK CUCUMBER REPORT BY YUNA TL</projectName>
+<!--                                                        <skip>false</skip>-->
 
                             <outputDirectory>${project.build.directory}/site/cucumber-reporting</outputDirectory>
                             <inputDirectory>${project.build.directory}/site/cucumber.json</inputDirectory>

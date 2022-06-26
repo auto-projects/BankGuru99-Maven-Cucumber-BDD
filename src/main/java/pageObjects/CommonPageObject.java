@@ -40,9 +40,15 @@ public class CommonPageObject extends BasePage {
     }
 
     // RADIO BUTTON
-    public void selectDynamicRadioButtonByText(WebDriver driver, String radioButtonByText) {
-        waitForElementClickable(driver, CommonPageUI.DYNAMIC_RADIO_BUTTON_BY_VALUE, radioButtonByText);
-        checkToDefaultCheckboxOrRadio(driver, CommonPageUI.DYNAMIC_RADIO_BUTTON_BY_VALUE, radioButtonByText);
+    public void clickOnDynamicRadioButtonByValue(WebDriver driver, String radioButtonByValue) {
+        waitForElementClickable(driver, CommonPageUI.DYNAMIC_RADIO_BUTTON_BY_VALUE, radioButtonByValue);
+        checkToDefaultCheckboxOrRadio(driver, CommonPageUI.DYNAMIC_RADIO_BUTTON_BY_VALUE, radioButtonByValue);
+    }
+
+    // DROPDOWN
+    public void selectFromDynamicDropdownByText(WebDriver driver, String dropdownByText, String selectedValue) {
+        waitForElementClickable(driver, CommonPageUI.DYNAMIC_DROPDOWN_BY_TEXT, dropdownByText);
+        selectItemInDefaultDropdown(driver, CommonPageUI.DYNAMIC_DROPDOWN_BY_TEXT, selectedValue, dropdownByText);
     }
 
     // VALUE AT ROW

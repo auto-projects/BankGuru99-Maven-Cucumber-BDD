@@ -1,12 +1,12 @@
 package pageObjects;
 
 import org.openqa.selenium.WebDriver;
-import pageObjects.AccessDetailsPageObject;
-import pageObjects.HomePageObject;
-import pageObjects.LoginPageObject;
-import pageObjects.RegisterPageObject;
 
 public class PageGeneratorManager {
+
+    public static CommonPageObject getCommonPage(WebDriver driver) {
+        return new CommonPageObject(driver);
+    }
 
     public static RegisterPageObject getRegisterPage(WebDriver driver) {
         return new RegisterPageObject(driver);
@@ -23,9 +23,11 @@ public class PageGeneratorManager {
     public static HomePageObject getHomePage(WebDriver driver) {
         return new HomePageObject(driver);
     }
+
     public static NewCustomerPageObject getNewCustomerPage(WebDriver driver) {
         return new NewCustomerPageObject(driver);
     }
+
     public static NewAccountPageObject getNewAccountPage(WebDriver driver) {
         return new NewAccountPageObject(driver);
     }

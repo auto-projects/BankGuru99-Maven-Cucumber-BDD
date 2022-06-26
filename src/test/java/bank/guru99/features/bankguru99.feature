@@ -1,4 +1,4 @@
-@features_bank_guru99
+@bank_guru_99
 Feature: Register / Login / New Customer / Deposit
 
   @register_new_account
@@ -23,7 +23,7 @@ Feature: Register / Login / New Customer / Deposit
   Scenario Outline: Create new customer
     Given Open "New Customer" page
     Then Input into "Customer Name" textbox with data "<Customer Name>"
-    And Click on "Gender" radio button
+    And Click on 'Gender' radio button with value "f"
     And Input into "Date of Birth" textbox with data "<Date of Birth (In)>"
     And Input into "Address" text area with data "<Address>"
     And Input into "City" textbox with data "<City>"
@@ -45,11 +45,18 @@ Feature: Register / Login / New Customer / Deposit
     And The valid value displayed at "Mobile No." with data "<Mobile Number>"
     And The valid value displayed at "Email" with data "<E-mail>"
     Examples:
-      | Customer Name | Gender | Date of Birth (In) | Date of Birth (Out) | Address | City | State | PIN | Mobile Number | E-mail | Password |
-      | Customer Name | female   | 03/06/2000         | 2000-03-06          | Address | City | State | PIN | Mobile Number | E-mail | Password |
+      | Customer Name | Gender | Date of Birth (In) | Date of Birth (Out) | Address             | City              | State           | PIN       | Mobile Number | E-mail                      | Password     |
+      | Yuna TL               | female   | 03/06/2000        | 2000-03-06           | 200 Dong Khoi |Ho Chi Minh | Ben Thanh | 333333 | 0909360022r     | yuna@yopmail.com| Abc@1234 |
 
-
-
-
-
-
+@new_account
+Scenario Outline: Create new account
+  Given Open "New Account" page
+  Then Input into "Customer id" textbox with data "<Customer id>"
+  And Select from " Account type" dropdown with value "Current"
+  And Input into "Initial deposit" textbox with data "<Initial deposit>"
+  And Click on "submit" button
+  Then Successful message is displayed with "Account Generated Successfully!!!"
+  And Get value at "Account ID" row
+Examples:
+  | Customer id | Account type | Initial deposit |
+  | 112233        | Current           | 333333            |

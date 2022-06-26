@@ -1,4 +1,4 @@
-package bankguru99.stepDifinitions;
+package bank.guru99.stepDifinitions;
 
 import commons.DataUtil;
 import org.junit.Assert;

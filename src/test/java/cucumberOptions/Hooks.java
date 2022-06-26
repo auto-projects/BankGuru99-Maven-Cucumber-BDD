@@ -61,9 +61,9 @@ public class Hooks {
                         driver = new FirefoxDriver(firefoxOptions);
                         break;
                     case "ie":
-                        WebDriverManager.iedriver().arch32().setup();
+                WebDriverManager.iedriver().arch32().setup();
                         driver = new InternetExplorerDriver();
-                        break;
+                                break;
                     default:
                         WebDriverManager.chromedriver().setup();
                         driver = new ChromeDriver();

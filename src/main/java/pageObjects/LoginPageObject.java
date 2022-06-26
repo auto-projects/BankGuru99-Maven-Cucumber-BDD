@@ -16,16 +16,14 @@ public class LoginPageObject extends BasePage {
         clickOnElement(driver, LoginPageUI.HERE_BUTTON);
     }
 
-
-
-    public void inputToUserIDTextbox(String userID) {
+    public void inputIntoUserIDTextbox(String userID) {
         waitForElementVisible(driver, LoginPageUI.USER_ID_TEXTBOX);
         sendkeyToElement(driver, LoginPageUI.USER_ID_TEXTBOX, userID);
     }
 
-    public void inputToPasswordTextbox(String password) {
+    public void inputIntoPasswordTextbox(String password) {
         waitForElementVisible(driver, LoginPageUI.PASSWORD_TEXTBOX);
-        sendkeyToElement(driver, LoginPageUI.USER_ID_TEXTBOX, password);
+        sendkeyToElement(driver, LoginPageUI.PASSWORD_TEXTBOX, password);
     }
 
     public void clickOnLoginButton() {

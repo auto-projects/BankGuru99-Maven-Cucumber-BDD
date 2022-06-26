@@ -1,4 +1,4 @@
-package bankguru99.stepDifinitions;
+package bank.guru99.stepDifinitions;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
@@ -21,12 +21,12 @@ public class LoginPageSteps {
 
     @Then("^Input into 'UserID' textbox$")
     public void inputIntoUserIDTextbox() {
-        loginPage.inputToUserIDTextbox(RegisterPageSteps.userID);
+        loginPage.inputIntoUserIDTextbox(RegisterPageSteps.userID);
     }
 
     @And("^Input into 'Password' textbox$")
     public void inputIntoPasswordTextbox() {
-        loginPage.inputToPasswordTextbox(RegisterPageSteps.password);
+        loginPage.inputIntoPasswordTextbox(RegisterPageSteps.password);
     }
 
     @And("^Click on 'LOGIN' button$")
