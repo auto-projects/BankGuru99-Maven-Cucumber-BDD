@@ -1,4 +1,4 @@
-package bank.guru99.stepDifinitions;
+package guru99bank.stepDifinitions;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;

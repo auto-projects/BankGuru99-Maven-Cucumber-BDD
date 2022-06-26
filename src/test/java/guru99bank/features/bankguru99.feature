@@ -22,6 +22,16 @@ Feature: Register / Login / New Customer / Deposit
   @new_customer
   Scenario Outline: Create new customer
     Given Open "New Customer" page
+    Then Verify that "Customer Name" textbox is enabled
+    And Verify that "f" radio button at 'Gender' is enabled
+    And Verify that "Date of Birth" textbox is enabled
+    And Verify that "Address" textarea is enabled
+    And Verify that "City" textbox is enabled
+    And Verify that "State" textbox is enabled
+    And Verify that "PIN" textbox is enabled
+    And Verify that "Mobile Number" textbox is enabled
+    And Verify that "E-mail" textbox is enabled
+    And Verify that "Password" textbox is enabled
     Then Input into "Customer Name" textbox with data "<Customer Name>"
     And Click on 'Gender' radio button with value "f"
     And Input into "Date of Birth" textbox with data "<Date of Birth (In)>"
@@ -48,7 +58,7 @@ Feature: Register / Login / New Customer / Deposit
       | Customer Name | Gender | Date of Birth (In) | Date of Birth (Out) | Address             | City              | State           | PIN       | Mobile Number | E-mail                      | Password     |
       | Yuna TL               | female   | 03/06/2000        | 2000-03-06           | 200 Dong Khoi |Ho Chi Minh | Ben Thanh | 333333 | 0909360022r     | yuna@yopmail.com| Abc@1234 |
 
-@new_account
+@new_account_and_deposit
 Scenario Outline: Create new account
   Given Open "New Account" page
   Then Input into "Customer id" textbox with data "<Customer id>"
@@ -57,6 +67,11 @@ Scenario Outline: Create new account
   And Click on "submit" button
   Then Successful message is displayed with "Account Generated Successfully!!!"
   And Get value at "Account ID" row
+  And Open "Deposit" page
+  And Input into "Account No" textbox with data "<Account No>"
+  And Input into "Amount" textbox with data "<Amount>"
+  And Input into "Description" textbox with data "<Description>"
 Examples:
-  | Customer id | Account type | Initial deposit |
-  | 112233        | Current           | 333333            |
+  | Customer id | Account type | Initial deposit | Account No | Amount | Description |
+  | 6084             | Current           | 333333            | 123123        | 900000  | Nothing |
+

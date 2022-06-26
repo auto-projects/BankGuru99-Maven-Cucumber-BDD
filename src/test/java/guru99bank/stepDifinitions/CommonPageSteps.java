@@ -1,18 +1,14 @@
-package bank.guru99.stepDifinitions;
+package guru99bank.stepDifinitions;
 
 import commons.BasePage;
 import commons.DataUtil;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumberOptions.Hooks;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
-import pageObjects.CommonPageObject;
-import pageObjects.NewAccountPageObject;
-import pageObjects.NewCustomerPageObject;
-import pageObjects.PageGeneratorManager;
+import pageObjects.*;
 
 public class CommonPageSteps extends BasePage {
     WebDriver driver;
@@ -22,6 +18,7 @@ public class CommonPageSteps extends BasePage {
     CommonPageObject commonPage;
     NewCustomerPageObject newCustomerPage;
     NewAccountPageObject newAccountPage;
+    DepositPageObject depositPage;
 
     public CommonPageSteps() {
         this.driver = Hooks.openAndQuitBrowser();
@@ -41,10 +38,16 @@ public class CommonPageSteps extends BasePage {
     @Given("^Open \"([^\"]*)\" page$")
     public void openPage(String pageName) {
         commonPage.openDynamicPageByText(driver, pageName);
-        if (pageName.equals("New Customer")) {
-            newCustomerPage = PageGeneratorManager.getNewCustomerPage(driver);
-        } else if (pageName.equals("New Account")) {
-            newAccountPage = PageGeneratorManager.getNewAccountPage(driver);
+        switch (pageName) {
+            case "New Customer":
+                newCustomerPage = PageGeneratorManager.getNewCustomerPage(driver);
+                break;
+            case "New Account":
+                newAccountPage = PageGeneratorManager.getNewAccountPage(driver);
+                break;
+            case "Deposit":
+                depositPage = PageGeneratorManager.getDepositPage(driver);
+                break;
         }
     }
 
@@ -72,9 +75,9 @@ public class CommonPageSteps extends BasePage {
             case "Password":
                 inputData = fakePassword;
                 break;
-            case "Customer id":
-                inputData = customerID;
-                break;
+//            case "Customer id":
+//                inputData = customerID;
+//                break;
             case "\n" +
                     "                            Initial deposit":
                 inputData = dataFaker.getNumber();
@@ -91,8 +94,13 @@ public class CommonPageSteps extends BasePage {
 
     @And("^Get value at \"([^\"]*)\" row$")
     public void getValueAtRow(String rowName) {
-        customerID = commonPage.getDynamicValueAtRowByText(driver, rowName).trim();
-        System.out.println(customerID);
+        if (rowName.equals("Customer ID")) {
+            customerID = commonPage.getDynamicValueAtRowByText(driver, rowName).trim();
+            System.out.println("CUSTOMER ID: " + customerID);
+        } else if (rowName.equals("Account No")) {
+            accountID = commonPage.getDynamicValueAtRowByText(driver, rowName).trim();
+            System.out.println("ACCOUNT No: " + accountID);
+        }
     }
 
     @And("^Input into \"([^\"]*)\" text area with data \"([^\"]*)\"$")
@@ -142,8 +150,24 @@ public class CommonPageSteps extends BasePage {
     }
 
     @And("^Select from \"([^\"]*)\" dropdown with value \"([^\"]*)\"$")
-    public void selectFromDropdownWithValue(String dropdownByText, String selectedValue)  {
+    public void selectFromDropdownWithValue(String dropdownByText, String selectedValue) {
         commonPage.selectFromDynamicDropdownByText(driver, dropdownByText, selectedValue);
     }
+
+    @Then("^Verify that \"([^\"]*)\" textbox is enabled$")
+    public void verifyThatTextboxIsEnabled(String textboxByText) {
+        Assert.assertTrue(commonPage.isDynamicTextboxByTextEnabled(driver, textboxByText));
+    }
+    @And("^Verify that \"([^\"]*)\" textarea is enabled$")
+    public void verifyThatTextareaIsEnabled(String textareaByText) {
+        Assert.assertTrue(commonPage.isDynamicTextareaByTextEnabled(driver, textareaByText));
+    }
+
+    @And("^Verify that \"([^\"]*)\" radio button at 'Gender' is enabled$")
+    public void verifyThatRadioButtonIsEnabled(String radioButtonByValue) {
+        Assert.assertTrue(commonPage.isDynamicRadioButtonEnabled(driver, radioButtonByValue));
+    }
+
+
 }
 

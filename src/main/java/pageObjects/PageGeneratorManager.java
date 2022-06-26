@@ -32,6 +32,10 @@ public class PageGeneratorManager {
         return new NewAccountPageObject(driver);
     }
 
+    public static DepositPageObject getDepositPage(WebDriver driver) {
+        return new DepositPageObject(driver);
+    }
+
 
 }
 

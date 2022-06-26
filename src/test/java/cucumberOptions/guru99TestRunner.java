@@ -8,8 +8,8 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features = "src/test/java/bank/guru99/features",
-		glue = "bank.guru99.stepDefinitions",
+		features = "src/test/java/guru99bank/features",
+		glue = "guru99bank.stepDefinitions",
 		//dryRun = true,
 		strict = true,
 		monochrome = true,
@@ -17,6 +17,6 @@ import cucumber.api.junit.Cucumber;
 		snippets = SnippetType.CAMELCASE,
 		tags = { "@bank_guru_99" })
 
-public class Guru99TestRunner {
+public class guru99TestRunner {
 
 }

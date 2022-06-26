@@ -27,10 +27,20 @@ public class CommonPageObject extends BasePage {
         sendkeyToElement(driver, CommonPageUI.DYNAMIC_TEXTBOX_BY_TEXT, inputData, textboxByText);
     }
 
+    public boolean isDynamicTextboxByTextEnabled(WebDriver driver, String textboxByText) {
+        waitForElementVisible(driver, CommonPageUI.DYNAMIC_TEXTBOX_BY_TEXT, textboxByText);
+        return isElementEnabled(driver, CommonPageUI.DYNAMIC_TEXTBOX_BY_TEXT, textboxByText);
+    }
+
     // TEXTAREA
     public void inputIntoDynamicTextarea(WebDriver driver, String textareaByText, String inputData) {
         waitForElementVisible(driver, CommonPageUI.DYNAMIC_TEXT_AREA_BY_TEXT, textareaByText);
         sendkeyToElement(driver, CommonPageUI.DYNAMIC_TEXT_AREA_BY_TEXT, inputData, textareaByText);
+    }
+
+    public boolean isDynamicTextareaByTextEnabled(WebDriver driver, String textareaByText) {
+        waitForElementVisible(driver, CommonPageUI.DYNAMIC_TEXT_AREA_BY_TEXT, textareaByText);
+        return isElementEnabled(driver, CommonPageUI.DYNAMIC_TEXT_AREA_BY_TEXT, textareaByText);
     }
 
     // BUTTON
@@ -43,6 +53,10 @@ public class CommonPageObject extends BasePage {
     public void clickOnDynamicRadioButtonByValue(WebDriver driver, String radioButtonByValue) {
         waitForElementClickable(driver, CommonPageUI.DYNAMIC_RADIO_BUTTON_BY_VALUE, radioButtonByValue);
         checkToDefaultCheckboxOrRadio(driver, CommonPageUI.DYNAMIC_RADIO_BUTTON_BY_VALUE, radioButtonByValue);
+    }
+    public boolean isDynamicRadioButtonEnabled(WebDriver driver, String radioButtonByValue) {
+        waitForElementVisible(driver, CommonPageUI.DYNAMIC_RADIO_BUTTON_BY_VALUE, radioButtonByValue);
+        return isElementEnabled(driver, CommonPageUI.DYNAMIC_RADIO_BUTTON_BY_VALUE, radioButtonByValue);
     }
 
     // DROPDOWN
@@ -62,5 +76,4 @@ public class CommonPageObject extends BasePage {
         waitForElementVisible(driver, CommonPageUI.DYNAMIC_MESSAGE, messageValue);
         return isElementDisplayed(driver, CommonPageUI.DYNAMIC_MESSAGE, messageValue);
     }
-
 }
